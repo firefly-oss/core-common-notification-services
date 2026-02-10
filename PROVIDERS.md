@@ -159,7 +159,7 @@ If you only want to use Resend for emails:
 ```yaml
 # SendGrid Email Provider - DISABLED
 #sendgrid:
-#  api-key: ${SENDGRID_API_KEY}
+# api-key: ${SENDGRID_API_KEY}
 
 # Resend Email Provider - ENABLED
 resend:

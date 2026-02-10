@@ -158,7 +158,7 @@ Sends a push notification using the configured provider (Firebase).
 
 ### Prerequisites
 
-- Java 21 or higher
+- Java 25 or higher
 - Maven 3.8 or higher
 - PostgreSQL database
 - Provider accounts:
