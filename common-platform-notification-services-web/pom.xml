@@ -12,46 +12,43 @@
     <artifactId>common-platform-notification-services-web</artifactId>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
         <!-- Notifications Core (ports & services) -->
         <dependency>
-            <groupId>com.firefly</groupId>
-            <artifactId>lib-notifications-core</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.fireflyframework</groupId>
+            <artifactId>fireflyframework-notifications-core</artifactId>
+            <version>${fireflyframework.bom.version}</version>
         </dependency>
 
         <!-- Provider adapters: include the ones you plan to use -->
         <dependency>
-            <groupId>com.firefly</groupId>
-            <artifactId>lib-notifications-twilio</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.fireflyframework</groupId>
+            <artifactId>fireflyframework-notifications-twilio</artifactId>
+            <version>${fireflyframework.bom.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.firefly</groupId>
-            <artifactId>lib-notifications-sendgrid</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.fireflyframework</groupId>
+            <artifactId>fireflyframework-notifications-sendgrid</artifactId>
+            <version>${fireflyframework.bom.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.firefly</groupId>
-            <artifactId>lib-notifications-firebase</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.fireflyframework</groupId>
+            <artifactId>fireflyframework-notifications-firebase</artifactId>
+            <version>${fireflyframework.bom.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.firefly</groupId>
-            <artifactId>lib-notifications-resend</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.fireflyframework</groupId>
+            <artifactId>fireflyframework-notifications-resend</artifactId>
+            <version>${fireflyframework.bom.version}</version>
         </dependency>
 
         <!-- Common Libraries -->
         <dependency>
-            <groupId>com.firefly</groupId>
-            <artifactId>lib-common-web</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.fireflyframework</groupId>
+            <artifactId>fireflyframework-web</artifactId>
         </dependency>
 
         <!-- Spring Boot -->

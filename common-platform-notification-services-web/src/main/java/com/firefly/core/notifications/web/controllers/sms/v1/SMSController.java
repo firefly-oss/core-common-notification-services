@@ -17,9 +17,9 @@
 
 package com.firefly.core.notifications.web.controllers.sms.v1;
 
-import com.firefly.core.notifications.core.services.sms.v1.SMSService;
-import com.firefly.core.notifications.interfaces.dtos.sms.v1.SMSRequestDTO;
-import com.firefly.core.notifications.interfaces.dtos.sms.v1.SMSResponseDTO;
+import org.fireflyframework.notifications.core.services.sms.v1.SMSService;
+import org.fireflyframework.notifications.interfaces.dtos.sms.v1.SMSRequestDTO;
+import org.fireflyframework.notifications.interfaces.dtos.sms.v1.SMSResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;

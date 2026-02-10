@@ -17,9 +17,9 @@
 
 package com.firefly.core.notifications.web.controllers.push.v1;
 
-import com.firefly.core.notifications.core.services.push.v1.PushService;
-import com.firefly.core.notifications.interfaces.dtos.push.v1.PushNotificationRequest;
-import com.firefly.core.notifications.interfaces.dtos.push.v1.PushNotificationResponse;
+import org.fireflyframework.notifications.core.services.push.v1.PushService;
+import org.fireflyframework.notifications.interfaces.dtos.push.v1.PushNotificationRequest;
+import org.fireflyframework.notifications.interfaces.dtos.push.v1.PushNotificationResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

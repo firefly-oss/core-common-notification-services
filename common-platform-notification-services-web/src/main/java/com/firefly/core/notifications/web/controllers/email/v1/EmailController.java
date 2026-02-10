@@ -17,9 +17,9 @@
 
 package com.firefly.core.notifications.web.controllers.email.v1;
 
-import com.firefly.core.notifications.core.services.email.v1.EmailService;
-import com.firefly.core.notifications.interfaces.dtos.email.v1.EmailRequestDTO;
-import com.firefly.core.notifications.interfaces.dtos.email.v1.EmailResponseDTO;
+import org.fireflyframework.notifications.core.services.email.v1.EmailService;
+import org.fireflyframework.notifications.interfaces.dtos.email.v1.EmailRequestDTO;
+import org.fireflyframework.notifications.interfaces.dtos.email.v1.EmailResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

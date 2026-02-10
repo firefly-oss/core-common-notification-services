@@ -29,7 +29,7 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 @SpringBootApplication(
         scanBasePackages = {
                 "com.firefly.core.notifications",
-                "com.firefly.common.web"  // Scan common web library configurations
+                "org.fireflyframework.web"  // Scan common web library configurations
         }
 )
 @EnableWebFlux
