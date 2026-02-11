@@ -202,7 +202,7 @@ export RESEND_API_KEY=re_your_actual_api_key
 ```xml
 <dependency>
     <groupId>com.firefly</groupId>
-    <artifactId>lib-notifications-resend</artifactId>
+    <artifactId>library-notifications-resend</artifactId>
     <version>${project.version}</version>
 </dependency>
 ```

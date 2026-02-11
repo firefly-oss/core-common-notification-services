@@ -8,9 +8,9 @@ Reactive Spring Boot microservice exposing unified APIs to send Email, SMS, and 
 - `core-common-notification-services-sdk`: Generated Java SDK (from OpenAPI)
 
 Note: Provider ports and implementations now live in external libraries:
-- Core ports/services: `com.firefly:lib-notifications-core`
-- Adapters: `com.firefly:lib-notifications-twilio` (SMS), `com.firefly:lib-notifications-sendgrid` (Email), `com.firefly:lib-notifications-firebase` (Push)
-(Optionally: `com.firefly:lib-notifications-resend` for Email)
+- Core ports/services: `com.firefly:library-notifications-core`
+- Adapters: `com.firefly:library-notifications-twilio` (SMS), `com.firefly:library-notifications-sendgrid` (Email), `com.firefly:library-notifications-firebase` (Push)
+(Optionally: `com.firefly:library-notifications-resend` for Email)
 
 ## Endpoints
 
@@ -39,7 +39,7 @@ firebase:
   credentialsPath: /path/to/service-account.json   # optional, ADC if omitted
   projectId: your-project-id                        # optional
 
-# Resend (Email) - if using lib-notifications-resend instead of SendGrid
+# Resend (Email) - if using library-notifications-resend instead of SendGrid
 resend:
   apiKey: ${RESEND_API_KEY}
   defaultFrom: noreply@example.com
