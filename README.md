@@ -4,8 +4,8 @@ Reactive Spring Boot microservice exposing unified APIs to send Email, SMS, and 
 
 ## Modules
 
-- `common-platform-notification-services-web`: Web application (controllers, OpenAPI, Actuator)
-- `common-platform-notification-services-sdk`: Generated Java SDK (from OpenAPI)
+- `core-common-notification-services-web`: Web application (controllers, OpenAPI, Actuator)
+- `core-common-notification-services-sdk`: Generated Java SDK (from OpenAPI)
 
 Note: Provider ports and implementations now live in external libraries:
 - Core ports/services: `com.firefly:lib-notifications-core`
@@ -18,7 +18,7 @@ Note: Provider ports and implementations now live in external libraries:
 - POST `/api/v1/sms/send`
 - POST `/api/v1/push`
 
-See `common-platform-notification-services-web/README.md` for request/response schemas.
+See `core-common-notification-services-web/README.md` for request/response schemas.
 
 ## Configure providers (application.yml)
 
@@ -50,8 +50,8 @@ To switch email providers, include the desired adapter on the classpath and remo
 ## Build and run
 
 ```bash
-mvn -q -DskipTests -f common-platform-notification-services/pom.xml package
-java -jar common-platform-notification-services-web/target/common-platform-notification-services-web-1.0.0-SNAPSHOT.jar
+mvn -q -DskipTests -f core-common-notification-services/pom.xml package
+java -jar core-common-notification-services-web/target/core-common-notification-services-web-1.0.0-SNAPSHOT.jar
 ```
 
 ## OpenAPI
@@ -82,13 +82,13 @@ The Common Platform Notification Services is a reactive Spring Boot application 
 The service follows a modular architecture with clear separation of concerns:
 
 ```
-common-platform-notification-services/
-├── common-platform-notification-services-core/         # Core business logic
-├── common-platform-notification-services-interfaces/   # API interfaces and DTOs
-├── common-platform-notification-services-web/          # Web controllers and application entry point
-├── common-platform-notification-services-providers-twilio/    # Twilio SMS provider
-├── common-platform-notification-services-providers-sendgrid/  # SendGrid email provider
-├── common-platform-notification-services-providers-firebase/  # Firebase push notification provider
+core-common-notification-services/
+├── core-common-notification-services-core/         # Core business logic
+├── core-common-notification-services-interfaces/   # API interfaces and DTOs
+├── core-common-notification-services-web/          # Web controllers and application entry point
+├── core-common-notification-services-providers-twilio/    # Twilio SMS provider
+├── core-common-notification-services-providers-sendgrid/  # SendGrid email provider
+├── core-common-notification-services-providers-firebase/  # Firebase push notification provider
 ```
 
 ## API Endpoints
@@ -200,14 +200,14 @@ mvn clean package
 ### Running the Application
 
 ```bash
-java -jar common-platform-notification-services-web/target/common-platform-notification-services-web-1.0.0-SNAPSHOT.jar
+java -jar core-common-notification-services-web/target/core-common-notification-services-web-1.0.0-SNAPSHOT.jar
 ```
 
 Or using Docker:
 
 ```bash
-docker build -t common-platform-notification-services .
-docker run -p 8080:8080 --env-file .env common-platform-notification-services
+docker build -t core-common-notification-services .
+docker run -p 8080:8080 --env-file .env core-common-notification-services
 ```
 
 ## Deployment

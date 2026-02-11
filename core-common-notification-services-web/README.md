@@ -39,5 +39,5 @@ To use Resend instead of SendGrid, replace the dependency in `pom.xml` according
 ## Run
 ```bash
 mvn -q -DskipTests -f ../pom.xml package
-java -jar target/common-platform-notification-services-web-1.0.0-SNAPSHOT.jar
+java -jar target/core-common-notification-services-web-1.0.0-SNAPSHOT.jar
 ```

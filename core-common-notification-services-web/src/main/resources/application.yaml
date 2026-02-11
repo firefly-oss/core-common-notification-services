@@ -1,6 +1,6 @@
 spring:
   application:
-    name: common-platform-notification-services
+    name: core-common-notification-services
     version: 1.0.0
     description: Notification Services Core Application
     team:

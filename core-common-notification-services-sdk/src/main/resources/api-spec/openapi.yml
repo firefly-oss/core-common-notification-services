@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: common-platform-notification-services
+  title: core-common-notification-services
   description: Notification Services Core Application
   contact:
     name: Firefly Software Solutions Inc

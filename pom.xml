@@ -11,11 +11,11 @@
     </parent>
 
     <groupId>com.firefly</groupId>
-    <artifactId>common-platform-notification-services</artifactId>
+    <artifactId>core-common-notification-services</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>common-platform-notification-services-web</module>
-        <module>common-platform-notification-services-sdk</module>
+        <module>core-common-notification-services-web</module>
+        <module>core-common-notification-services-sdk</module>
     </modules>
 
 
@@ -25,9 +25,9 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.release>${java.version}</maven.compiler.release>
         <fireflyframework.bom.version>26.01.01</fireflyframework.bom.version>
-        <common-platform-notification-services.version>
+        <core-common-notification-services.version>
             1.0.0-SNAPSHOT
-        </common-platform-notification-services.version>
+        </core-common-notification-services.version>
     </properties>
 
     <dependencies>
@@ -50,12 +50,12 @@
             </dependency>
             <dependency>
                 <groupId>com.firefly</groupId>
-                <artifactId>common-platform-notification-services-sdk</artifactId>
+                <artifactId>core-common-notification-services-sdk</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.firefly</groupId>
-                <artifactId>common-platform-notification-services-web</artifactId>
+                <artifactId>core-common-notification-services-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
