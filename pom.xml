@@ -11,15 +11,12 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.firefly</groupId>
     <artifactId>core-common-notification-services</artifactId>
     <packaging>pom</packaging>
     <modules>
         <module>core-common-notification-services-web</module>
         <module>core-common-notification-services-sdk</module>
     </modules>
-
-
     <properties>
         <java.version>25</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
