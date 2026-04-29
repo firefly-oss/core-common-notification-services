@@ -1,0 +1,20 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+
+jobs:
+  release:
+    uses: firefly-oss/.github/.github/workflows/java-release.yml@main
+    permissions:
+      contents: write
+      packages: write
+    with:
+      java-version: '25'
+      # Publish only the SDK module (and the aggregate pom it inherits
+      # from). Internal modules (interfaces, models, core, web) stay
+      # local — only the SDK is consumed across repos.
+      deploy-module: 'core-common-notification-services-sdk'
+    secrets: inherit

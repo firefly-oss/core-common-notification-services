@@ -1,0 +1,238 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:18080
+  description: Generated server url
+tags:
+- name: Push Notifications
+  description: APIs for sending push notifications
+- name: SMS Notifications
+  description: API for managing SMS-related operations.
+- name: Email Notifications
+  description: Email sending operations
+paths:
+  /api/v1/sms/send:
+    post:
+      tags:
+      - SMS Notifications
+      summary: Send an SMS message
+      description: Endpoint to send an SMS message using the specified phone number
+        and text message.
+      operationId: sendSMS
+      parameters:
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      requestBody:
+        description: Details of the SMS to be sent.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SMSRequestDTO"
+            example:
+              phoneNumber: "+1234567890"
+              message: "Hello, World!"
+        required: true
+      responses:
+        "200":
+          description: SMS sent successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SMSResponseDTO"
+              example:
+                messageId: "12345"
+                status: SENT
+                timestamp: 1696433658000
+        "400":
+          description: Invalid request details. Ensure that the phone number and message
+            are valid.
+          content:
+            application/json:
+              example:
+                status: FAILED
+                errorMessage: Invalid phone number.
+                timestamp: 1696433658000
+        "500":
+          description: Internal server error.
+          content:
+            application/json:
+              example:
+                status: FAILED
+                errorMessage: Provider service unavailable.
+                timestamp: 1696433658000
+  /api/v1/push:
+    post:
+      tags:
+      - Push Notifications
+      summary: Send a push notification
+      description: This endpoint is used to send push notifications to a given device
+        token.
+      operationId: sendPush
+      parameters:
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      requestBody:
+        description: Details of the push notification to be sent
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PushNotificationRequest"
+        required: true
+      responses:
+        "200":
+          description: Push notification sent successfully
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PushNotificationResponse"
+        "400":
+          description: Invalid request
+        "500":
+          description: Internal server error
+  /api/v1/email/send:
+    post:
+      tags:
+      - Email Notifications
+      summary: Send email
+      description: Sends an email using the configured provider
+      operationId: sendEmail
+      parameters:
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      requestBody:
+        description: Email request payload
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EmailRequestDTO"
+        required: true
+      responses:
+        "200":
+          description: Email sent successfully
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/EmailResponseDTO"
+        "400":
+          description: Invalid email request
+        "500":
+          description: Internal server error
+components:
+  schemas:
+    SMSRequestDTO:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+        message:
+          type: string
+    SMSResponseDTO:
+      type: object
+      properties:
+        messageId:
+          type: string
+        status:
+          type: string
+        errorMessage:
+          type: string
+        timestamp:
+          type: integer
+          format: int64
+    PushNotificationRequest:
+      type: object
+      properties:
+        token:
+          type: string
+        title:
+          type: string
+        body:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: string
+    PushNotificationResponse:
+      type: object
+      properties:
+        messageId:
+          type: string
+        success:
+          type: boolean
+        errorMessage:
+          type: string
+    EmailAttachmentDTO:
+      type: object
+      properties:
+        filename:
+          type: string
+        content:
+          type: string
+          format: byte
+        contentType:
+          type: string
+    EmailRequestDTO:
+      required:
+      - from
+      - subject
+      - to
+      type: object
+      properties:
+        from:
+          minLength: 1
+          type: string
+          format: email
+        to:
+          minLength: 1
+          type: string
+          format: email
+        cc:
+          type: array
+          items:
+            type: string
+        bcc:
+          type: array
+          items:
+            type: string
+        subject:
+          minLength: 1
+          type: string
+        text:
+          type: string
+        html:
+          type: string
+        attachments:
+          type: array
+          items:
+            $ref: "#/components/schemas/EmailAttachmentDTO"
+    EmailResponseDTO:
+      type: object
+      properties:
+        messageId:
+          type: string
+        status:
+          type: string
+          enum:
+          - SENT
+          - FAILED
+        errorMessage:
+          type: string
+        timestamp:
+          type: integer
+          format: int64
