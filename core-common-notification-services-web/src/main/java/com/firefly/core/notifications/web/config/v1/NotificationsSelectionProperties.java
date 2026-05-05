@@ -22,7 +22,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "notifications")
+@ConfigurationProperties(prefix = "firefly.notifications")
 public class NotificationsSelectionProperties {
 
     private Email email = new Email();

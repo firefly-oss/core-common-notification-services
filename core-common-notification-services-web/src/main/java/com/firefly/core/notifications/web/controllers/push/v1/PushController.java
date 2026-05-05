@@ -27,6 +27,7 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,8 +39,11 @@ import reactor.core.publisher.Mono;
 @Tag(name = "Push Notifications", description = "APIs for sending push notifications")
 public class PushController {
 
-    @Autowired
-private PushService service;
+    // Optional: bean is only created when a PushProvider is configured.
+    // Controller always registers so the OpenAPI spec is complete; runtime
+    // calls return 503 below when no provider is configured.
+    @Autowired(required = false)
+    private PushService service;
 
     @PostMapping
     @Operation(
@@ -75,6 +79,15 @@ private PushService service;
     public Mono<ResponseEntity<PushNotificationResponse>> sendPush(
             @org.springframework.web.bind.annotation.RequestBody PushNotificationRequest request
     ) {
+        if (service == null) {
+            return Mono.just(ResponseEntity
+                    .status(HttpStatus.SERVICE_UNAVAILABLE)
+                    .body(new PushNotificationResponse(
+                            null,
+                            false,
+                            "Push provider not configured. Set firefly.notifications.push.provider " +
+                            "(firebase) and the corresponding credentials.")));
+        }
         return service.sendPush(request)
                 .map(ResponseEntity::ok);
     }

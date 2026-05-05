@@ -26,8 +26,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -39,10 +39,13 @@ import reactor.core.publisher.Mono;
 @RestController
 @RequestMapping("/api/v1/email")
 @Tag(name = "Email Notifications", description = "Email sending operations")
-@RequiredArgsConstructor
 public class EmailController {
 
-private final EmailService service;
+    // Optional: bean is only created when an EmailProvider is configured.
+    // The controller itself always registers so the OpenAPI spec is complete;
+    // requests served while the provider is absent return 503 below.
+    @Autowired(required = false)
+    private EmailService service;
 
     @Operation(
             summary = "Send email",
@@ -76,6 +79,14 @@ private final EmailService service;
     )
     @PostMapping("/send")
     public Mono<ResponseEntity<EmailResponseDTO>> sendEmail(@Valid @RequestBody EmailRequestDTO request) {
+        if (service == null) {
+            log.warn("Email send rejected — no email provider configured");
+            return Mono.just(ResponseEntity
+                    .status(HttpStatus.SERVICE_UNAVAILABLE)
+                    .body(EmailResponseDTO.error(
+                            "Email provider not configured. Set firefly.notifications.email.provider " +
+                            "(sendgrid|resend) and the corresponding credentials.")));
+        }
         log.info("Received request to send email to: {}", request.getTo());
         return service.sendEmail(request)
                 // Map the successful result to an HTTP 200 response

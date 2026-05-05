@@ -51,35 +51,41 @@ logging:
 
 # ============================================
 # Notification Providers Configuration
-# Only providers with configured properties will be instantiated
+# All provider properties live under the `firefly.notifications.*` prefix,
+# matching the @ConfigurationProperties / @ConditionalOnProperty contracts
+# in fireflyframework-notifications-{sendgrid,resend,twilio,firebase}.
+# Only providers with configured properties will be instantiated.
 # ============================================
+firefly:
+  notifications:
+    # Provider selection — pick the channel implementations to load
+    email:
+      provider: ${NOTIFICATIONS_EMAIL_PROVIDER:}   # sendgrid | resend
+    sms:
+      provider: ${NOTIFICATIONS_SMS_PROVIDER:}     # twilio
+    push:
+      provider: ${NOTIFICATIONS_PUSH_PROVIDER:}    # firebase
 
-# Twilio SMS Provider - comment out to disable
-twilio:
-  config:
-    account-sid: ${TWILIO_ACCOUNT_SID}
-    auth-token: ${TWILIO_AUTH_TOKEN}
-    phone-number: ${TWILIO_PHONE_NUMBER}
+    # SendGrid (email)
+    sendgrid:
+      api-key: ${SENDGRID_API_KEY:}
 
-# SendGrid Email Provider - comment out to disable
-sendgrid:
-  api-key: ${SENDGRID_API_KEY}
+    # Resend (email)
+    resend:
+      api-key: ${RESEND_API_KEY:}
+      default-from: ${RESEND_DEFAULT_FROM:}
+      base-url: ${RESEND_BASE_URL:}
 
-# Resend Email Provider - comment out to disable
-# Uncomment the following lines to enable Resend
-#resend:
-#  api-key: ${RESEND_API_KEY}
-#  default-from: "noreply@example.com"
+    # Twilio (SMS)
+    twilio:
+      account-sid: ${TWILIO_ACCOUNT_SID:}
+      auth-token: ${TWILIO_AUTH_TOKEN:}
+      phone-number: ${TWILIO_PHONE_NUMBER:}
 
-# Default provider selection when multiple email providers are configured
-notifications:
-  email:
-    provider: ${NOTIFICATIONS_EMAIL_PROVIDER:}
-
-# Firebase Cloud Messaging (Push) Provider - comment out to disable
-firebase:
-  project-id: ${FIREBASE_PROJECT_ID}
-  credentials-path: ${FIREBASE_CREDENTIALS_PATH:}
+    # Firebase Cloud Messaging (push)
+    firebase:
+      project-id: ${FIREBASE_PROJECT_ID:}
+      credentials-path: ${FIREBASE_CREDENTIALS_PATH:}
 
 ---
 spring:

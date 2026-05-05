@@ -28,6 +28,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,8 +41,11 @@ import reactor.core.publisher.Mono;
 @Tag(name = "SMS Notifications", description = "API for managing SMS-related operations.")
 public class SMSController {
 
-    @Autowired
-private SMSService service;
+    // Optional: bean is only created when an SMSProvider is configured.
+    // Controller always registers so the OpenAPI spec is complete; runtime
+    // calls return 503 below when no provider is configured.
+    @Autowired(required = false)
+    private SMSService service;
 
     @Operation(
             summary = "Send an SMS message",
@@ -87,6 +91,13 @@ private SMSService service;
     public Mono<ResponseEntity<SMSResponseDTO>> sendSMS(
             @RequestBody SMSRequestDTO request
     ) {
+        if (service == null) {
+            return Mono.just(ResponseEntity
+                    .status(HttpStatus.SERVICE_UNAVAILABLE)
+                    .body(SMSResponseDTO.error(
+                            "SMS provider not configured. Set firefly.notifications.sms.provider " +
+                            "(twilio) and the corresponding credentials.")));
+        }
         return service.sendSMS(request)
                 .map(ResponseEntity::ok)
                 .doOnNext(response -> System.out.println("SMS response: " + response.getBody()));
