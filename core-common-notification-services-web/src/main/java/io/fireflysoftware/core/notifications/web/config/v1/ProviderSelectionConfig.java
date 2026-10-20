@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.firefly.core.notifications.web.config.v1;
+package io.fireflysoftware.core.notifications.web.config.v1;
 
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;

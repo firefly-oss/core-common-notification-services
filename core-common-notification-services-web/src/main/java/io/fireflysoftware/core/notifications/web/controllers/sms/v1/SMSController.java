@@ -15,7 +15,7 @@
  */
 
 
-package com.firefly.core.notifications.web.controllers.sms.v1;
+package io.fireflysoftware.core.notifications.web.controllers.sms.v1;
 
 import org.fireflyframework.notifications.core.services.sms.v1.SMSService;
 import org.fireflyframework.notifications.interfaces.dtos.sms.v1.SMSRequestDTO;

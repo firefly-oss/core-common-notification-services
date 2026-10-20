@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.firefly</groupId>
+        <groupId>io.fireflysoftware</groupId>
         <artifactId>firefly-parent</artifactId>
-        <version>26.10.2</version>
+        <version>26.10.3</version>
         <relativePath/>
     </parent>
 
@@ -23,7 +23,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.release>${java.version}</maven.compiler.release>
         <core-common-notification-services.version>
-            26.10.2
+            26.10.3
         </core-common-notification-services.version>
     </properties>
 
@@ -39,12 +39,12 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.firefly</groupId>
+                <groupId>io.fireflysoftware</groupId>
                 <artifactId>core-common-notification-services-sdk</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.firefly</groupId>
+                <groupId>io.fireflysoftware</groupId>
                 <artifactId>core-common-notification-services-web</artifactId>
                 <version>${project.version}</version>
             </dependency>

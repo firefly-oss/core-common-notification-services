@@ -15,7 +15,7 @@
  */
 
 
-package com.firefly.core.notifications.web.controllers.email.v1;
+package io.fireflysoftware.core.notifications.web.controllers.email.v1;
 
 import org.fireflyframework.notifications.core.services.email.v1.EmailService;
 import org.fireflyframework.notifications.interfaces.dtos.email.v1.EmailRequestDTO;

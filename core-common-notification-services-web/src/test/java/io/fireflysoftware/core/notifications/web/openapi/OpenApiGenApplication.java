@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.firefly.core.notifications.web.openapi;
+package io.fireflysoftware.core.notifications.web.openapi;
 
 import org.fireflyframework.web.openapi.EnableOpenApiGen;
 import org.springframework.boot.SpringApplication;
@@ -31,7 +31,7 @@ import org.springframework.context.annotation.ComponentScan;
  * Maven profile with {@code useTestClasspath=true}.
  */
 @EnableOpenApiGen
-@ComponentScan(basePackages = "com.firefly.core.notifications.web.controllers")
+@ComponentScan(basePackages = "io.fireflysoftware.core.notifications.web.controllers")
 public class OpenApiGenApplication {
     public static void main(String[] args) {
         SpringApplication.run(OpenApiGenApplication.class, args);

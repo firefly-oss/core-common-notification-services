@@ -15,7 +15,7 @@
  */
 
 
-package com.firefly.core.notifications.web.controllers.push.v1;
+package io.fireflysoftware.core.notifications.web.controllers.push.v1;
 
 import org.fireflyframework.notifications.core.services.push.v1.PushService;
 import org.fireflyframework.notifications.interfaces.dtos.push.v1.PushNotificationRequest;

@@ -201,7 +201,7 @@ export RESEND_API_KEY=re_your_actual_api_key
 **Solution:** Verify the provider's library is included in `pom.xml`:
 ```xml
 <dependency>
-    <groupId>com.firefly</groupId>
+    <groupId>io.fireflysoftware</groupId>
     <artifactId>library-notifications-resend</artifactId>
     <version>${project.version}</version>
 </dependency>

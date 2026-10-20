@@ -26,7 +26,7 @@ springdoc:
     operationsSorter: method
     docExpansion: none
     filter: true
-  packages-to-scan: com.firefly.core.notifications.web.controllers
+  packages-to-scan: io.fireflysoftware.core.notifications.web.controllers
   paths-to-match: /api/**
 
 management:
@@ -96,7 +96,7 @@ spring:
 logging:
   level:
     root: INFO
-    com.firefly: DEBUG
+    io.fireflysoftware: DEBUG
     org.springframework.r2dbc: DEBUG
     org.flywaydb: DEBUG
 
@@ -109,7 +109,7 @@ spring:
 logging:
   level:
     root: INFO
-    com.firefly: DEBUG
+    io.fireflysoftware: DEBUG
     org.springframework.r2dbc: INFO
 
 springdoc:
@@ -127,7 +127,7 @@ spring:
 logging:
   level:
     root: WARN
-    com.firefly: INFO
+    io.fireflysoftware: INFO
     org.springframework: WARN
 
 springdoc:

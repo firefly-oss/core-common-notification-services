@@ -15,7 +15,7 @@
  */
 
 
-package com.firefly.core.notifications.web;
+package io.fireflysoftware.core.notifications.web;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
@@ -28,7 +28,7 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 
 @SpringBootApplication(
         scanBasePackages = {
-                "com.firefly.core.notifications",
+                "io.fireflysoftware.core.notifications",
                 "org.fireflyframework.web"  // Scan common web library configurations
         }
 )
