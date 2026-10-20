@@ -4,7 +4,7 @@ info:
   description: Notification Services Core Application
   contact:
     name: Firefly Software Foundation
-    email: dev@getfirefly.io
+    email: dev@fireflysoftware.io
   version: 1.0.0
 servers:
   - url: /
