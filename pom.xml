@@ -12,6 +12,7 @@
     </parent>
 
     <artifactId>core-common-notification-services</artifactId>
+    <name>core-common-notification-services</name>
     <packaging>pom</packaging>
     <modules>
         <module>core-common-notification-services-web</module>

@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>core-common-notification-services-sdk</artifactId>
+    <name>core-common-notification-services-sdk</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
